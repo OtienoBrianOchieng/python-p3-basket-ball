@@ -182,3 +182,71 @@ def game_dict():
             ]
         }
     }
+
+
+def num_points_per_game(player_name):
+
+    game_data = game_dict()
+
+    for team_info in game_data.values():
+        for player in team_info["players"]:
+            if player["name"] == player_name:
+                return player["points_per_game"]
+            
+
+def player_age(player_name):
+
+    game_data = game_dict()
+
+    for information in game_data.values():
+        for player in information["players"]:
+            if player ["name"] == player_name:
+                return player ["age"]
+
+
+def team_colors(team_name):
+    game_data = game_dict()
+
+    for information in game_data.values():
+        if information ["team_name"] == team_name:
+                return information ["colors"]
+
+def team_names():
+    game_data = game_dict()
+    return [team_info["team_name"] for team_info in game_data.values()]
+   
+
+def player_numbers(team_name):
+    game_data = game_dict()
+    jersey_list = []
+
+    for information in game_data.values():
+        if information["team_name"] == team_name:
+            jersey_list = [player["number"] for player in information["players"]]
+
+    return jersey_list
+
+
+def player_stats(player_name):
+    game_data = game_dict()
+    
+    for team_info in game_data.values():
+        for player in team_info["players"]:
+            if player["name"] == player_name:
+                return {
+                    "name": player["name"],
+                    "number": player["number"],
+                    "position": player["position"],
+                    "points_per_game": player["points_per_game"],
+                    "rebounds_per_game": player["rebounds_per_game"],
+                    "assists_per_game": player["assists_per_game"],
+                    "steals_per_game": player["steals_per_game"],
+                    "blocks_per_game": player["blocks_per_game"],
+                    "career_points": player["career_points"],
+                    "age": player["age"],
+                    "height_inches": player["height_inches"],
+                    "shoe_brand": player["shoe_brand"],
+                }
+
+   
+
